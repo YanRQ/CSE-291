@@ -26,8 +26,8 @@ with open("stride_result.txt", 'w') as f_stride:
         cmd_list[15] = str(para[4])
         cmd_list[17] = str(para[5])
 
-        lines = subprocess.call(cmd_list)
-        results = line.split('\n')[1]
+        lines = subprocess.check_output(cmd_list)
+        results = lines.split('\n')[1]
         xarr = results.split()
         
         f_stride.write(','.join([str(x) for x in para[:4]]+["0", "0"]+[str(x) for x in para[4:]]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')

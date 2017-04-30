@@ -20,8 +20,8 @@ with open("seq_result.txt", 'w') as f_seq:
         cmd_list[7] = str(para[2])
         cmd_list[9] = str(para[3])
 
-        lines = subprocess.call(cmd_list)
-        results = line.split('\n')[1]
+        lines = subprocess.check_output(cmd_list)
+        results = lines.split('\n')[1]
         xarr = results.split()
         
         f_seq.write(','.join([str(x) for x in para]+["0" for i in xrange(4)]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
