@@ -9,12 +9,12 @@ wrnd_list = [0, 50, 100]
 rrnd_list = [0, 50, 100]
 
 counter = 0
-subprocess.call("rm -rf seq_result.log".split())
+subprocess.call("rm -rf random_result.log".split())
 
 cmd_list = "fitness --device=/dev/sda3 --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --outfile test.log".split()
 
-with open("seq_result.txt", 'w') as f_seq:
-    f_seq.write("wr_ratio,qdep,wrsz,rdsz,wrnd,rrnd,wr_stride,rd_stride,lat,bw,iops\n")
+with open("random_result.txt", 'w') as f_random:
+    f_random.write("wr_ratio,qdep,wrsz,rdsz,wrnd,rrnd,wr_stride,rd_stride,lat,bw,iops\n")
     for para in itertools.product(wr_list, qdep_list, wrsize_list, rdsize_list, wrnd_list, rrnd_list):
         if para[4] == 0 and para[5] == 0:
             continue
@@ -32,6 +32,6 @@ with open("seq_result.txt", 'w') as f_seq:
         xarr = line.split()
 
         
-        f_seq.write(','.join([str(x) for x in para]+["0", "0"]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
+        f_random.write(','.join([str(x) for x in para]+["0", "0"]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
     counter += 1
-    f_seq.write(str(counter)+' tests done.\n')
+    f_random.write(str(counter)+' tests done.\n')
