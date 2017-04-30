@@ -31,5 +31,5 @@ with open("stride_result.txt", 'w') as f_stride:
 
         
         f_stride.write(','.join([str(x) for x in para[:4]]+["0", "0"]+[str(x) for x in para[4:]]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
-    counter += 1
+    	counter += 1
     f_stride.write(str(counter)+' tests done.\n')

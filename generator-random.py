@@ -33,5 +33,5 @@ with open("random_result.txt", 'w') as f_random:
 
         
         f_random.write(','.join([str(x) for x in para]+["0", "0"]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
-    counter += 1
+    	counter += 1
     f_random.write(str(counter)+' tests done.\n')

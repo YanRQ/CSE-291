@@ -27,5 +27,5 @@ with open("seq_result.txt", 'w') as f_seq:
 
         
         f_seq.write(','.join([str(x) for x in para]+["0" for i in xrange(4)]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
-    counter += 1
+    	counter += 1
     f_seq.write(str(counter)+' tests done.\n')
