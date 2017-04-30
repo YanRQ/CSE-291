@@ -11,7 +11,7 @@ rdstride_list = [0, 64, 128, 256]
 counter = 0
 subprocess.call("rm -rf stride_result.log".split())
 
-cmd_list = "fitness --device=/dev/sda --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --direct --outfile test.log".split()
+cmd_list = "fitness --device=/dev/sda --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --direct".split()
 
 with open("stride_result.txt", 'w') as f_stride:
     f_stride.write("wr_ratio,qdep,wrsz,rdsz,wrnd,rrnd,wr_stride,rd_stride,lat,bw,iops\n")
