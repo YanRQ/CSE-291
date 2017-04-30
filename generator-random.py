@@ -26,12 +26,10 @@ with open("random_result.txt", 'w') as f_random:
         cmd_list[11] = str(para[4])
         cmd_list[13] = str(para[5])
 
-        subprocess.call(cmd_list)
-        line = subprocess.check_output("tail -n 1 test.log".split())
-        line = line.strip()
-        xarr = line.split()
-
+        lines = subprocess.call(cmd_list)
+        results = line.split('\n')[1]
+        xarr = results.split()
         
         f_random.write(','.join([str(x) for x in para]+["0", "0"]+[xarr[-1],xarr[-3],xarr[-2]])+'\n')
-    	counter += 1
+        counter += 1
     f_random.write(str(counter)+' tests done.\n')
