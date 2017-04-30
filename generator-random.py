@@ -1,7 +1,7 @@
 import subprocess
 import itertools
 
-wr_list = [0, 20, 40, 60, 80, 100]
+wr_list = [0, 25, 50, 75, 100]
 qdep_list = [1, 4, 16, 64]
 wrsize_list = [1, 4, 16, 64, 256]
 rdsize_list = [1, 4, 16, 64, 256]
@@ -11,7 +11,7 @@ rrnd_list = [0, 50, 100]
 counter = 0
 subprocess.call("rm -rf random_result.log".split())
 
-cmd_list = "fitness --device=/dev/sda3 --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --outfile test.log".split()
+cmd_list = "fitness --device=/dev/sda --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --direct --outfile test.log".split()
 
 with open("random_result.txt", 'w') as f_random:
     f_random.write("wr_ratio,qdep,wrsz,rdsz,wrnd,rrnd,wr_stride,rd_stride,lat,bw,iops\n")

@@ -1,21 +1,23 @@
 import subprocess
 import itertools
 
-wr_list = [0, 20, 40, 60, 80, 100]
+wr_list = [0, 25, 50, 75, 100]
 qdep_list = [1, 4, 16, 64]
 wrsize_list = [1, 4, 16, 64, 256]
 rdsize_list = [1, 4, 16, 64, 256]
-wrstride_list = [1, 64, 128, 256]
-rdstride_list = [1, 64, 128, 256]
+wrstride_list = [0, 64, 128, 256]
+rdstride_list = [0, 64, 128, 256]
 
 counter = 0
 subprocess.call("rm -rf stride_result.log".split())
 
-cmd_list = "fitness --device=/dev/sda3 --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --outfile test.log".split()
+cmd_list = "fitness --device=/dev/sda --wr x --qdep x --wrsz x --rdsz x --wrnd 0 --rrnd 0 --wr_stride 0 --rd_stride 0 --warm 5 --test 5 --direct --outfile test.log".split()
 
 with open("stride_result.txt", 'w') as f_stride:
     f_stride.write("wr_ratio,qdep,wrsz,rdsz,wrnd,rrnd,wr_stride,rd_stride,lat,bw,iops\n")
     for para in itertools.product(wr_list, qdep_list, wrsize_list, rdsize_list, wrstride_list, rdstride_list):
+        if para[4] == 0 and para[5] == 0:
+            continue
 
         cmd_list[3] = str(para[0])
         cmd_list[5] = str(para[1])
