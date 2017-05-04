@@ -1,8 +1,7 @@
+# Import the necessary modules and libraries
 import numpy as np
 import pandas as pd
 import os
-os.chdir('/Users/andy/Documents/Spring17/291/project/data') # Set working directory
-# Import the necessary modules and libraries
 from sklearn import tree
 import numpy as np
 from sklearn.tree import DecisionTreeRegressor
@@ -13,7 +12,7 @@ from sklearn.metrics import r2_score
 
 # Create a random dataset
 
-os.chdir('/Users/andy/Documents/Spring17/291/project/data') # Set working directory
+#os.chdir('/Users/andy/Documents/Spring17/291/project/data') # Set working directory
 
 train_data_stride = pd.read_csv("stride_result.csv")    # Read the data
 train_data_random = pd.read_csv("random_result.csv")
